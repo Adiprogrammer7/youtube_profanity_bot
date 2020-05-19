@@ -7,6 +7,8 @@ verify_ssl = true
 
 [packages]
 selenium = "*"
+textblob = "*"
+better-profanity = "*"
 
 [requires]
 python_version = "3.7"
