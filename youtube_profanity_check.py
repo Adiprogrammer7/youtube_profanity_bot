@@ -14,7 +14,7 @@ class ProfanityBot:
 		self.driver = webdriver.Chrome(PATH)
 		self.channel_url = channel_url
 		self.channel_name = ''
-		self.vid_cnt = vid_cnt  #the number of videos to be fetched from each channel.
+		self.vid_cnt = vid_cnt  #the number of videos to be fetched from channel.
 		self.del_transcript = del_transcript
 
 	def fetch_transcripts(self):
@@ -40,15 +40,15 @@ class ProfanityBot:
 				try:
 					transcript_btn = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "ytd-popup-container.style-scope.ytd-app:nth-child(13) iron-dropdown.style-scope.ytd-popup-container:nth-child(1) div.style-scope.iron-dropdown ytd-menu-popup-renderer.style-scope.ytd-popup-container paper-listbox.style-scope.ytd-menu-popup-renderer:nth-child(1) > ytd-menu-service-item-renderer.style-scope.ytd-menu-popup-renderer:nth-child(2)")))
 					transcript_btn.click()
-					# to toggle timestamp we just need to run this once.
 					sleep(2)
+					# to toggle timestamp we just need to run this once.
 					if toggle:
 						WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//ytd-menu-renderer[@class='style-scope ytd-engagement-panel-title-header-renderer']//button[@id='button']"))).click()
 						WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//ytd-menu-service-item-renderer[@class='style-scope ytd-menu-popup-renderer']"))).click()
 						toggle = False  #once toggled, no need to toggle again.
 
 					transcript_text = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "ytd-transcript-body-renderer"))).text
-					count += 1
+					count += 1					
 				except:
 					count += 1
 					print(f"no transcipt found for {count}th video!")
@@ -105,7 +105,7 @@ class ProfanityBot:
 			sentence_li = text.split('\n')
 			for sentence in sentence_li:
 				blob = TextBlob(sentence)
-				if blob.sentiment.polarity > 0:
+				if blob.sentiment.polarity >= 0.1:
 					pos_count += 1
 				elif blob.sentiment.polarity < 0:
 					neg_count += 1
@@ -114,6 +114,5 @@ class ProfanityBot:
 		neg_sentiment = (neg_count/total_count) * 100
 		print(f'Positive sentiment: {round(pos_sentiment, 4)}%\nNegative sentiment: {round(neg_sentiment, 4)}%\nSubjectivity: {round(subjectivity, 4)}')
 
-obj = ProfanityBot('https://www.youtube.com/user/codyko69', 2)
+obj = ProfanityBot('https://www.youtube.com/channel/UC3DkFux8Iv-aYnTRWzwaiBA', 7)
 obj.fetch_transcripts()
-
