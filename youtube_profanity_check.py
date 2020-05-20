@@ -4,8 +4,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from textblob import TextBlob
 from better_profanity import profanity
-from time import sleep
 import os
+from time import sleep
 
 PATH = 'C:\Program Files (x86)\chromedriver.exe'  #provide path to chromedriver.exe here.
 
