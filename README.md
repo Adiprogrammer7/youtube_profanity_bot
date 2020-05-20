@@ -1,1 +1,2 @@
 # youtube_profanity_check
+A python selenium bot that will scrape transcripts of videos from YouTube when channel link is given as input for given no. of videos. Then based on that transcript it will give info like is it profane or not, curse words used, profanity percentage of videos, subjectivity and positive/negative sentiment. It may get disturbed sometimes due to youtube's random popups and when transcript language is not set to English by default, else works perfect!

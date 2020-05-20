@@ -116,3 +116,4 @@ class ProfanityBot:
 
 obj = ProfanityBot('https://www.youtube.com/channel/UC3DkFux8Iv-aYnTRWzwaiBA', 7)
 obj.fetch_transcripts()
+
