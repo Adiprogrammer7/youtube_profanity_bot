@@ -1,10 +1,13 @@
--i https://pypi.org/simple
+-i https://pypi.org/simple/
 better-profanity==0.6.1
-click==7.1.2
-joblib==0.15.1
-nltk==3.5
-regex==2020.5.14
+click==8.0.1
+importlib-metadata==4.4.0 ; python_version < '3.8'
+joblib==1.0.1
+nltk==3.6.2
+regex==2021.4.4
 selenium==3.141.0
 textblob==0.15.3
-tqdm==4.46.0
-urllib3==1.25.9
+tqdm==4.61.0
+typing-extensions==3.10.0.0 ; python_version < '3.8'
+urllib3==1.26.5
+zipp==3.4.1
